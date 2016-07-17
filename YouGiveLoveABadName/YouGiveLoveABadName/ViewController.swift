@@ -27,9 +27,9 @@ class ViewController: UIViewController {
     */
     
     func expandBonJovi() {
-        UIView.animateKeyframesWithDuration(0.5, delay: 0, options: .CalculationModeLinear, animations: {
+        UIView.animateKeyframesWithDuration(0.6, delay: 0, options: .CalculationModeLinear, animations: {
             
-            let minimumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.45)
+            let minimumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.4)
             let originalHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5)
             let maximumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 1.1)
             let viewHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor)
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     func shrinkBonJovi() {
         UIView.animateKeyframesWithDuration(0.6, delay: 0, options: .CalculationModeLinear, animations: {
             
-            let minimumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.45)
+            let minimumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.4)
             let originalHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5)
             let maximumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 1.1)
             let viewHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor)
@@ -72,6 +72,7 @@ class ViewController: UIViewController {
                     self.bonJoviHeight?.active = false
                     self.bonJoviHeight? = constraint
                     self.bonJoviHeight?.active = true
+                    self.view.layoutIfNeeded()
                 })
             }
             
@@ -84,19 +85,17 @@ class ViewController: UIViewController {
     @IBAction func expandButtonTapped(sender: AnyObject) {
         
         // Starting from original height, should expand:
-        if bonJoviHeight == self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5) {
+        if bonJoviHeight?.multiplier == 0.5 {
             print("We entered the if statement for expanding.")
             expandBonJovi()
         
         // Starting from full view height, should shrink:
-        } else if bonJoviHeight == self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor) {
+        } else if bonJoviHeight?.multiplier == 1.0 {
             print("We entered the if statement for shrinking.")
             shrinkBonJovi()
         }
     }
-    
-
-    
+   
     
 }
 
