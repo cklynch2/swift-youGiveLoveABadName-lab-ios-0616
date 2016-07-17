@@ -25,7 +25,7 @@
                                     <action selector="expandButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRQ-aU-fBn"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="bonjovi" translatesAutoresizingMaskIntoConstraints="NO" id="2mK-Ph-zer">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bonjovi" translatesAutoresizingMaskIntoConstraints="NO" id="2mK-Ph-zer">
                                 <rect key="frame" x="0.0" y="145" width="600" height="310"/>
                             </imageView>
                         </subviews>
@@ -35,8 +35,12 @@
                             <constraint firstItem="LEJ-XM-6d9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PGh-Wo-Sbh"/>
                             <constraint firstItem="2mK-Ph-zer" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VN4-6m-ALd"/>
                             <constraint firstItem="LEJ-XM-6d9" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-20" id="aSQ-Gu-O0M"/>
+                            <constraint firstItem="2mK-Ph-zer" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nke-zf-RFo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bonJovi" destination="2mK-Ph-zer" id="tKL-Uo-Jay"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
