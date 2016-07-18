@@ -30,11 +30,10 @@ class ViewController: UIViewController {
         UIView.animateKeyframesWithDuration(0.6, delay: 0, options: .CalculationModeLinear, animations: {
             
             let minimumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.4)
-            let originalHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5)
             let maximumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 1.1)
             let viewHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor)
             
-            let expansionHeights = [originalHeight, minimumHeight, maximumHeight, viewHeight]
+            let expansionHeights = [minimumHeight, maximumHeight, viewHeight]
             
             for (index, constraint) in expansionHeights.enumerate() {
                 UIView.addKeyframeWithRelativeStartTime(Double(index)/Double(expansionHeights.count), relativeDuration: 1.0/Double(expansionHeights.count), animations: {
@@ -45,10 +44,7 @@ class ViewController: UIViewController {
                 })
             }
             
-        }) { (true) in
-            self.bonJoviHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor)
-            self.bonJoviHeight?.active = true
-        }
+        }) { (true) in } // Completion block not necessary because the last key frame is where the animation ends.
     }
     
     /* Now make the expandButtonTapped(_:) method toggle between the full-height and normal sizes of the image view. You'll probably have to add a flag property so you know whether to expand or shrink. The shrink animation should be the exact opposite of the expansion one:
@@ -63,9 +59,8 @@ class ViewController: UIViewController {
             let minimumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.4)
             let originalHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5)
             let maximumHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 1.1)
-            let viewHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor)
             
-            let expansionHeights = [viewHeight, maximumHeight, minimumHeight, originalHeight]
+            let expansionHeights = [maximumHeight, minimumHeight, originalHeight]
             
             for (index, constraint) in expansionHeights.enumerate() {
                 UIView.addKeyframeWithRelativeStartTime(Double(index)/Double(expansionHeights.count), relativeDuration: 1.0/Double(expansionHeights.count), animations: {
@@ -77,8 +72,9 @@ class ViewController: UIViewController {
             }
             
         }) { (true) in
-            self.bonJoviHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5)
-            self.bonJoviHeight?.active = true
+//            self.bonJoviHeight?.active = false
+//            self.bonJoviHeight = self.bonJovi.heightAnchor.constraintEqualToAnchor(self.view.heightAnchor, multiplier: 0.5)
+//            self.bonJoviHeight?.active = true
         }
     }
     
